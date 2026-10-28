@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="border-box p-[30px]">
+    <input class="outline-1 outline-black w-[200px] h-[30px] px-2" id="inputfst" type="text"
+        placeholder="First number">
+    <input class="outline-1 outline-black w-[200px] h-[30px] px-2" id="inputlst" type="text"
+        placeholder="Last number">
+    <button class="bg-gray-700 text-white px-3 py-1" onclick="runTime()">Check result</button><br>
+    <div id="output" class="text-black"></div>
+</body>
+
+<script>
+    const inputfst = document.getElementById('inputfst')
+    const inputlst = document.getElementById('inputlst')
+    const list = document.getElementById('list')
+    const ouput = document.getElementById('output')
+
+    function runTime(){
+        let firstvalue = inputfst.value  
+        let lastvalue = inputlst.value
+
+        if(!firstvalue && !lastvalue){
+            alert('please input a number')
+        } else if(isNaN(firstvalue)){
+            alert('Your first input must be a number')
+        } else if(isNaN(lastvalue)){
+            alert('Your last input must be a number')
+        } else {
+            firstvalue = +firstvalue
+            lastvalue = +lastvalue
+            let group = ``;
+
+            for(let a = firstvalue; a <= lastvalue; a++){
+                group += `<div class="font-[500] text-[17px]">`;
+                let sqbracket = [];
+                
+                for(let w = 0; w <= 2; w++){
+                    let range = Math.floor(Math.random() * 300)
+                    sqbracket.push(range)
+                }
+                
+                group += `rgb(${sqbracket})</div>`;
+                
+            }
+            
+            ouput.innerHTML = group
+        }
+    }
+</script>
+
+</html>

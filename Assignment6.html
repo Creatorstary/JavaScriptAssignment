@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="border-box p-[30px]">
+    <input class="outline-1 outline-black w-[200px] h-[30px] px-2" id="inputfst" type="text"
+        placeholder="Starting number">
+    <input class="outline-1 outline-black w-[200px] h-[30px] px-2" id="inputlst" type="text"
+        placeholder="ending number">
+    <button class="bg-black text-white px-3 py-1" onclick="range()">Check result</button><br>
+
+    <div id="output" class="text-black"></div>
+    <div id="list" class="mt-[25px] flex flex-col gap-1"></div>
+</body>
+
+<script>
+
+    const inputfst = document.getElementById('inputfst')
+    const inputlst = document.getElementById('inputlst')
+    const list = document.getElementById('list')
+    const ouput = document.getElementById('output')
+
+    function range() {
+        let firstvalue = inputfst.value
+        let secvalue = inputlst.value
+
+        if (!firstvalue && !secvalue) {
+            alert('please input a number')
+        } else if (isNaN(firstvalue)) {
+            alert('Your first input must be a number')
+        } else if (isNaN(secvalue)) {
+            alert('Your second input must be a number')
+        } else {
+            firstvalue = +firstvalue
+            secvalue = +secvalue
+            let html = ``;
+
+            for (let i = firstvalue; i <= secvalue; i++) {
+                html += `<div><h1 class="font-[500] text-black">${i} Multiplication Table</h1>`
+
+
+                for (let n = 0; n <= 12; n++) {
+                    html += `${i} * ${n} = ${i * n} <br>`
+                }
+
+                html += `</div>`
+            }
+
+            ouput.innerHTML = html;
+        }
+    }
+</script>
+
+</html>

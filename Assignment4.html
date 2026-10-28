@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @layer theme {
+
+            :root,
+            :host {
+                --font-fig: "Figtree", sans-serif;
+            }
+        }
+    </style>
+</head>
+
+<body class="h-[400px] box-border p-10 font-(family-name:--font-fig)">
+    <div class="flex flex-row items-center mb-[20px] gap-2">
+        <input id="input" class="w-[400px] h-[30px] outline-black outline-1 ps-1" type="text">
+        <div class="w-auto">
+            <button onclick="season()" class="bg-yellow-400 font-[500] active:bg-yellow-600 py-1 px-2">Check
+                session</button>
+        </div>
+    </div>
+    <div class="flex flex-row text-[25px] font-[400] gap-2">
+        <span>The weather season:</span>
+        <span id="output"></span>
+    </div>
+</body>
+<script>
+
+    const input = document.getElementById('input')
+    const output = document.getElementById('output')
+
+    function season() {
+        let inputValue = input.value.trim();
+        inputValue = inputValue.slice(0, 1).toUpperCase() + inputValue.substring(1, inputValue.length).toLowerCase();
+
+
+        if (!inputValue) {
+            alert('Please input value')
+        } else if ((inputValue == 'January') || (inputValue == 'February') || (inputValue == 'December')) {
+            output.innerHTML = 'Winter';
+        } else if ((inputValue == 'November') || (inputValue == 'October') || (inputValue == 'September')) {
+            output.innerHTML = 'Autumn';
+        } else if ((inputValue == 'March') || (inputValue == 'April') || (inputValue == 'May')) {
+            output.innerHTML = 'Spring';
+        } else if ((inputValue == 'August') || (inputValue == 'June') || (inputValue == 'July')) {
+            output.innerHTML = 'Summer';
+        } else{
+            output.innerHTML = "Invalid Input";
+        }
+
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="border-box m-0 p-0">
+    <div id="slide" class="relative">
+        <div id="img" class="w-auto h-[635px]"></div>
+
+        <button onclick="next()"
+            class="bg-black w-[50px] h-[50px] rounded-full text-white flex flex-col justify-center text-[25px] text-center items-center absolute top-[50%] right-[5%] z-1">></button>
+        <button onclick="prev()"
+            class="bg-black w-[50px] h-[50px] rounded-full text-white flex flex-col justify-center text-[25px] text-center items-center absolute top-[50%] left-[5%] z-1">
+            <</button>
+    </div>
+</body>
+
+<script>
+    const slide = document.getElementById('slide');
+    const img = document.getElementById('img');
+
+    let imgbg = ['bg-gray-100', 'bg-gray-300', 'bg-gray-500', 'bg-green-100', 'bg-green-300', 'bg-green-500']
+
+    let m = 0;
+    function next() {
+        img.innerHTML = '';
+
+        if (m >= imgbg.length - 1) {
+            img.innerHTML = `<div id="img" class="w-auto h-[635px] ${imgbg[imgbg.length - 1]}"></div>`
+        } else {
+            m++
+            img.innerHTML = `<div id="img" class="w-auto h-[635px] ${imgbg[m]}"></div>`
+        }
+
+    }
+
+    function prev() {
+        img.innerHTML = '';
+
+        if (m == 0) {
+            img.innerHTML = `<div id="img" class="w-auto h-[635px] ${imgbg[0]}"></div>`
+        } else {
+            --m
+            img.innerHTML = `<div id="img" class="w-auto h-[635px] ${imgbg[m]}"></div>`
+        }
+    }
+</script>
+
+</html>
